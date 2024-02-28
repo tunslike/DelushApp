@@ -17,7 +17,7 @@ import {
   import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-const DashboardScreen = () => {
+const DashboardScreen = ({navigation}) => {
 
   const [activeCategory, setActiveCategory] = useState(1)
 
@@ -28,11 +28,13 @@ const DashboardScreen = () => {
   // end of function
 
   return (
-    <SafeAreaView>
-    <ScrollView style={{
+    <SafeAreaView
+    style={{
       flexGrow: 1,
       backgroundColor: COLORS.sliderBackgroundGrey
-    }}>
+    }}
+    >
+    <ScrollView>
 
         <View style={styles.header}>
             <View>
@@ -97,6 +99,7 @@ const DashboardScreen = () => {
               <Text style={styles.itemHeader}>Food Menu</Text>
 
               <FoodMenuItem 
+                onPress={() => navigation.navigate("OrderDetails", {foodImage:images.jollofrice, foodName:"Jollof Rice Special", foodDesc:"Served with plantain or moimio with 1 meat and fish", foodAmount:2500})}
                 image={images.jollofrice}
                 foodName="Jollof Rice Special"
                 desc="Served with plantain or moimio with 1 meat and fish"
@@ -104,6 +107,7 @@ const DashboardScreen = () => {
               />
 
               <FoodMenuItem 
+                onPress={() => navigation.navigate("OrderDetails", {foodImage:images.amala, foodName:"Amala and Ewedu", foodDesc:"Served with 2 pieces of meat or goat meat", foodAmount:4500})}
                 image={images.amala}
                 foodName="Amala and Ewedu"
                 desc="Served with 2 pieces of meat or goat meat"
@@ -111,6 +115,7 @@ const DashboardScreen = () => {
               />
 
               <FoodMenuItem 
+                onPress={() => navigation.navigate("OrderDetails", {foodImage:images.egusi, foodName:"Egusi Soup", foodDesc:"Served with plantain or moimio with 1 meat and fish", foodAmount:2500})}
                 image={images.egusi}
                 foodName="Egusi Soup"
                 desc="Served with plantain or moimio with 1 meat and fish"
@@ -118,8 +123,9 @@ const DashboardScreen = () => {
               />
 
               <FoodMenuItem 
+                onPress={() => navigation.navigate("OrderDetails", {foodImage:images.spag, foodName:"Spagetti", foodDesc:"Served with plantain or moimio with 1 meat and fish", foodAmount:2500})}
                 image={images.spag}
-                foodName="Jollof Rice Special"
+                foodName="Spagetti"
                 desc="Served with plantain or moimio with 1 meat and fish"
                 amount={4500}
               />
@@ -133,12 +139,13 @@ const DashboardScreen = () => {
 const styles = StyleSheet.create({
   itemHeader: {
     fontFamily: FONTS.POPPINS_SEMIBOLD,
-    color: COLORS.loginScreenDesc,
+    color: COLORS.tabColorActive,
     fontSize: wp(4),
-    marginBottom: wp(3)
+    marginBottom: wp(3),
+    marginLeft: wp(2)
   },
   itemDisplay: {
-    marginHorizontal: wp(6),
+    marginHorizontal: wp(5),
     marginTop: wp(7),
     marginBottom: wp(18)
   },

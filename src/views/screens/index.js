@@ -7,8 +7,10 @@ import ForgotPasswordScreen from "./Landing/ForgotPasswordScreen";
 import CartScreen from "./Dashboard/CartScreen";
 import HistoryScreen  from "./Dashboard/HistoryScreen";
 import ProfileScreen from "./Dashboard/ProfileScreen";
+import OrderDetailsScreen from "./Order/OrderDetailsScreen";
 
 export {
+    OrderDetailsScreen,
     CartScreen,
     HistoryScreen,
     ProfileScreen,

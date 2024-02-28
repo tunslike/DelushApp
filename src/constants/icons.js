@@ -32,8 +32,22 @@ const arrow_next = require("../assets/icons/arrow_next.png")
 const account_icon = require("../assets/icons/account_icon.png")
 const password = require("../assets/icons/password.png")
 const back_arrow = require("../assets/icons/back_arrow.png")
+const like = require("../assets/icons/like.png")
+const user_color_profile = require("../assets/icons/user_color_profile.png")
+const profile_arrow = require("../assets/icons/profile_arrow.png")
+const profile_person = require("../assets/icons/profile_person.png")
+const profile_privacy = require("../assets/icons/profile_privacy.png")
+const profile_notification = require("../assets/icons/profile_notification.png")
+const profile_about = require("../assets/icons/profile_about.png")
 
 export default {
+    profile_person,
+    profile_privacy,
+    profile_notification,
+    profile_about,
+    profile_arrow,
+    user_color_profile,
+    like,
     back_arrow,
     password,
     account_icon,

@@ -45,13 +45,14 @@ const styles = StyleSheet.create({
   txtMain: {
     fontFamily: FONTS.POPPINS_SEMIBOLD,
     color: COLORS.primaryGreen,
-    fontSize: wp(3.8)
+    fontSize: wp(3.5)
   },
   textAmount: {
     color: COLORS.priceColorRed,
     fontFamily: FONTS.POPPINS_SEMIBOLD,
     fontSize: wp(4),
-    marginTop: wp(1)
+    marginTop: wp(1),
+    marginBottom:wp(1)
   },
   addBtn: {
     backgroundColor: COLORS.prinmaryOrange,
