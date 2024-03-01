@@ -15,7 +15,7 @@ const AppStack = () => {
         >
             <Stack.Screen name="Tab" component={TabNavigator} />
             <Stack.Screen name='Dashboard' component={DashboardScreen} />
-            <Stack.Screen name='OrderDetails' component={OrderDetailsScreen} />
+            <Stack.Screen name='OrderDetails' component={OrderDetailsScreen} options={{animation: 'slide_from_bottom'}} />
 
         </Stack.Navigator>
     )

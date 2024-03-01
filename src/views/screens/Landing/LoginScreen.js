@@ -15,20 +15,22 @@ import {
   import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
   import { SafeAreaView } from 'react-native-safe-area-context';
   import { COLORS, images, FONTS, icons } from '../../../constants';
-  import { AccountTextBox } from '../../components';
+  import { AccountTextBox, Loader } from '../../components';
   import { AuthContext } from '../../../context/AuthContext';
   import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
-  const CreateAccountSchema = Yup.object().shape({
+  const loginSchema = Yup.object().shape({
 
-    username: Yup.string()
-      .email('Please enter a valid email')
-      .required('Please enter your email address'),
-    pinNumber: Yup.string()
-      .min(6, 'Invalid PIN number')
-      .max(6, 'Invalid PIN number')
-      .matches(/^[0-9]+$/, 'Invalid PIN number')
-      .required('Please enter your PIN Number')
+    phone: Yup.string()
+      .min(11, 'Phone number must be 11 digits')
+      .max(11, 'Phone number must be 11 digits')
+      .matches(/^[0-9]+$/, 'Enter a valid phone number')
+      .required('Enter phone number'),
+    password: Yup.string()
+      .min(6, 'Invalid password')
+      .max(8, 'Invalid password')
+      .matches(/^[0-9]+$/, 'Invalid password')
+      .required('Enter password')
 })
 
 const LoginScreen = ({navigation}) => {
@@ -40,12 +42,11 @@ const LoginScreen = ({navigation}) => {
   const [username, setUsername] = useState('');
   const [pwd, setPwd] = useState('');
 
-
-     //Function to login
-     const AuthenticateUser = async () => {
-      ValidateCustomerLogin("user", "password");
-    }
-    // end of function
+  //Function to login
+  const AuthenticateUser = async (values) => {
+      ValidateCustomerLogin(values.phone, values.password);
+  }
+  // end of function
 
   return (
         <KeyboardAwareScrollView 
@@ -61,6 +62,10 @@ const LoginScreen = ({navigation}) => {
     <SafeAreaView>
     <StatusBar barStyle="dark-content" />
 
+    {(isLoading) &&
+      <Loader />
+    }
+
       <View style={styles.logo}>
           <Image source={images.appLogo} 
           style={{
@@ -73,23 +78,45 @@ const LoginScreen = ({navigation}) => {
       <Text style={styles.titleDesc}>Enter your login details to sign in</Text>
       </View>
 
+
+      <Formik
+        initialValues={{
+          phone: '',
+          password: '',
+        }}
+        validationSchema={loginSchema}
+        onSubmit={values => AuthenticateUser(values)}
+      >
+
+      {({values, errors, touched, handleChange, setFieldTouched, isValid, handleSubmit}) => (
+<View>
       <View style={styles.formBox}>
-            <View>
+            <View style={styles.rowBox}>
             <AccountTextBox 
             icon={icons.profile}
             placeholder="Phone Number"
             phone={1}
             maxlength={11}
+            value={values.phone}
+            onChange={handleChange('phone')}
             />
+            {errors.phone && 
+              <Text style={styles.formErrortext}>{errors.phone}</Text>
+            }
             </View>
 
             <View>
             <AccountTextBox 
             icon={icons.password}
             placeholder="Password"
-            phone={1}
-            maxlength={11}
+            value={values.password}
+            onChange={handleChange('password')}
+            maxlength={8}
+            setSecureText={true}
             />
+            {errors.password && 
+              <Text style={styles.formErrortext}>{errors.password}</Text>
+            }
             </View>
       </View>
       <TouchableOpacity
@@ -100,9 +127,9 @@ const LoginScreen = ({navigation}) => {
       </TouchableOpacity>
         
 
-      <View style={{marginTop: wp(8)}}>
+      <View style={{marginTop: wp(10)}}>
                 <TouchableOpacity
-                onPress={() => AuthenticateUser()}
+                onPress={handleSubmit}
                 style={styles.createActBtn}
             >
                   <Text style={styles.btnRegister}>Login</Text>
@@ -115,6 +142,9 @@ const LoginScreen = ({navigation}) => {
               <Text style={styles.btnLogintxt}>Create an Account</Text>
           </TouchableOpacity>
       </View>
+</View>
+      )}
+  </Formik>
 
     </SafeAreaView>
     </KeyboardAwareScrollView>
@@ -122,6 +152,17 @@ const LoginScreen = ({navigation}) => {
 }
 
 const styles = StyleSheet.create({
+  formErrortext: {
+    fontFamily: FONTS.POPPINS_LIGHT,
+    fontSize: wp(2.8),
+    marginTop: wp(1),
+    marginLeft: wp(6),
+    color: COLORS.priceColorRed,
+    fontWeight: '300',
+  },
+  rowBox: {
+    marginBottom: wp(3)
+  },
         btnLogintxt: {
           color: COLORS.primaryGreen,
           fontFamily: FONTS.POPPINS_MEDIUM,
@@ -158,11 +199,11 @@ const styles = StyleSheet.create({
   forgotBtn: {
     alignSelf: 'flex-end',
     marginHorizontal: wp(8.5),
-    marginTop: wp(2)
+    marginTop: wp(4)
   },
   formBox: {
     marginHorizontal: wp(6),
-    marginTop: wp(4)
+    marginTop: wp(6)
 },
   titleDesc: {
     marginTop: wp(1.5),

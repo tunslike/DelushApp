@@ -39,8 +39,10 @@ const profile_person = require("../assets/icons/profile_person.png")
 const profile_privacy = require("../assets/icons/profile_privacy.png")
 const profile_notification = require("../assets/icons/profile_notification.png")
 const profile_about = require("../assets/icons/profile_about.png")
+const basket = require("../assets/icons/basket.png")
 
 export default {
+    basket,
     profile_person,
     profile_privacy,
     profile_notification,

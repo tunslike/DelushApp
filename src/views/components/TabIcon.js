@@ -46,8 +46,9 @@ const TabIcon = ({focused, icon, title, addStyle}) => {
 
 const styles = StyleSheet.create({
     focusText: {
-        fontSize: wp(3),
-        fontFamily: FONTS.POPPINS_SEMIBOLD,
+        fontSize: wp(2.9),
+        marginTop: wp(1),
+        fontFamily: FONTS.POPPINS_MEDIUM,
         marginLeft:wp(1),
     },
     notFocusedTab: {

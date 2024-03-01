@@ -92,13 +92,13 @@ const OrderDetailsScreen = ({navigation, route}) => {
                 <TouchableOpacity
                     style={styles.createActBtn}
                  >
-                  <Text style={styles.btnRegister}>Register</Text>
+                  <Text style={styles.btnRegister}>Add to order</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
             style={styles.viewCartBtn}
          >
-          <Text style={styles.viewCartTxt}>View Cart</Text>
+          <Text style={styles.viewCartTxt}>View Orders</Text>
     </TouchableOpacity>
     
         

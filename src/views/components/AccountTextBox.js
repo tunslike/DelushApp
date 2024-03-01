@@ -42,8 +42,8 @@ const AccountTextBox = ({ placeholder,maxlength, phone, onFocus, onChange, value
 
 const styles = StyleSheet.create({
     inputStyle: {
-    fontFamily: FONTS.POPPINS_MEDIUM,
-    fontSize: wp(3.5),
+    fontFamily: FONTS.POPPINS_REGULAR,
+    fontSize: wp(3.2),
     width: '100%',
     color: COLORS.formTextGrey,
 
@@ -58,9 +58,8 @@ const styles = StyleSheet.create({
     borderStyle: 'solid',
     borderColor: COLORS.accountFormborder,
     paddingHorizontal: wp(4),
-    paddingVertical: Platform.OS === 'ios' ? wp(4) : wp(0.2),
-    marginHorizontal: wp(1),
-    marginBottom: wp(2.2)
+    paddingVertical: Platform.OS === 'ios' ? wp(3.8) : wp(0.2),
+    marginHorizontal: wp(1)
    }
 })
 

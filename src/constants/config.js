@@ -1,5 +1,5 @@
 export const APIBaseUrl = {
-    developmentUrl: "http://localhost:8082/api/v1/",
+    developmentUrl: "http://localhost:8083/api/v1/",
     productionUrl: "https://mpp.stanbicibtcpension.com:5443/",
 }
 

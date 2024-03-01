@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
     loginTxt: {
         fontFamily: FONTS.POPPINS_MEDIUM,
         fontSize:  wp(3.5),
-        color: COLORS.sliderDarkGray,
+        color: COLORS.primaryGreen,
         marginRight: wp(1.5),
       },
       loginBtn: {

@@ -12,7 +12,8 @@ const COLORS = {
     sliderBackgroundGrey: '#F5F5F5',
     loginScreenDesc: '#1E1E1E',
     accountFormborder: '#EBEBEB',
-    orderDetailsDesc: '#8D8D8D'
+    orderDetailsDesc: '#8D8D8D',
+    darkGrayTransparent: 'rgba(74, 81, 97, 0.7)',
 }
 
 export default COLORS;

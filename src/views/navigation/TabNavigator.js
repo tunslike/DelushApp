@@ -63,8 +63,8 @@ const TabNavigator = () => {
                 tabBarIcon: ({focused}) => 
                 <TabIcon 
                     focused={focused} 
-                    icon={icons.loan}
-                    title="Cart"    
+                    icon={icons.basket}
+                    title="Order"    
                 />
             }}
             />

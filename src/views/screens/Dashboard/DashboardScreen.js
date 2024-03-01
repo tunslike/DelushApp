@@ -13,11 +13,16 @@ import {
   Dimensions} from 'react-native';
   import { COLORS, images, FONTS, icons } from '../../../constants';
   import { AuthContext } from '../../../context/AuthContext';
+  import { useSelector, useDispatch } from 'react-redux';
   import { OrderCategory, FoodMenuItem } from '../../components';
   import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const DashboardScreen = ({navigation}) => {
+
+
+  const dispatch = useDispatch();
+  const customerData = useSelector((state) => state.customer.customerData);
 
   const [activeCategory, setActiveCategory] = useState(1)
 
@@ -38,7 +43,7 @@ const DashboardScreen = ({navigation}) => {
 
         <View style={styles.header}>
             <View>
-              <Text style={styles.textHeader}>Hello, Adebayo</Text>
+              <Text style={styles.textHeader}>Hello, {customerData.first_NAME}</Text>
               <Text style={styles.textDesc}>What would you like to order?</Text>
             </View>
             <TouchableOpacity

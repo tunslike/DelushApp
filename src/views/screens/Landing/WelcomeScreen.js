@@ -11,8 +11,9 @@ import {
     import { COLORS, images, icons, FONTS } from '../../../constants';
     import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen'
 
-
 const WelcomeScreen = ({navigation}) => {
+
+
   return (
     <View style={{flex: 1}}>
             <StatusBar translucent backgroundColor="rgba(0,0,0,0)" />

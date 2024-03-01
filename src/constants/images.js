@@ -13,8 +13,12 @@ const spag = require("../assets/images/spagheti.jpeg")
 const jollofrice = require("../assets/images/jollofrice.jpeg")
 const amala = require("../assets/images/amala.jpeg")
 const egusi = require("../assets/images/egusi.jpeg")
+const notFound = require("../assets/images/order_not_found.jpeg")
+const noOrder = require("../assets/images/no_order_found.jpeg")
 
 export default {
+    noOrder,
+    notFound,
     jollofrice,
     spag,
     amala,
