@@ -1,5 +1,6 @@
 const COLORS = {
     primaryGreen: '#238A53',
+    primaryGreenDisabled: '#8cbfa4',
     white: '#ffffff',
     prinmaryOrange: '#FF7C00',
     tabbedGray: '#454242',

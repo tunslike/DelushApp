@@ -40,8 +40,15 @@ const profile_privacy = require("../assets/icons/profile_privacy.png")
 const profile_notification = require("../assets/icons/profile_notification.png")
 const profile_about = require("../assets/icons/profile_about.png")
 const basket = require("../assets/icons/basket.png")
+const orderNo = require("../assets/icons/order_no.png")
+const orderTime = require("../assets/icons/time3.png")
+const orderSuccess = require("../assets/icons/order_success.png")
+
 
 export default {
+    orderTime,
+    orderSuccess,
+    orderNo,
     basket,
     profile_person,
     profile_privacy,

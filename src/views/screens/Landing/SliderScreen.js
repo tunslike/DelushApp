@@ -115,7 +115,7 @@ const SliderScreen = ({navigation}) => {
       >
             <Image source={icons.arrow_thick} 
                 style={{
-                    height:wp(6.7), width: wp(6.7), tintColor: COLORS.white, resizeMode: 'contain'
+                    height:wp(6), width: wp(6), tintColor: COLORS.white, resizeMode: 'contain'
                 }}
             />
       </TouchableOpacity>
@@ -182,9 +182,11 @@ const styles = StyleSheet.create({
       },
       nextBtn: {
         backgroundColor: COLORS.prinmaryOrange,
-        borderRadius: wp(15),
-        paddingHorizontal: wp(5.3),
-        paddingVertical: wp(5),
+        borderRadius: wp(14),
+        height: wp(14),
+        width: wp(14),
+        justifyContent: 'center',
+        alignItems: 'center',
         alignSelf: 'center'
       },
       sliderTitle: {

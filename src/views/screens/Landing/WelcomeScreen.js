@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     btnText: {
         color: COLORS.white,
         fontFamily: FONTS.POPPINS_BOLD,
-        fontSize: wp(4)
+        fontSize: wp(3.5)
     },
     getStartedBtn: {
         backgroundColor: COLORS.prinmaryOrange,
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
         columnGap: wp(3),
         borderRadius: wp(10),
         paddingHorizontal: wp(10),
-        paddingVertical: wp(4),
+        paddingVertical: wp(3.5),
         marginTop: wp(8)
     },
     descText: {

@@ -8,8 +8,10 @@ import CartScreen from "./Dashboard/CartScreen";
 import HistoryScreen  from "./Dashboard/HistoryScreen";
 import ProfileScreen from "./Dashboard/ProfileScreen";
 import OrderDetailsScreen from "./Order/OrderDetailsScreen";
+import OrderCompletedScreen from "./Order/OrderCompletedScreen";
 
 export {
+    OrderCompletedScreen,
     OrderDetailsScreen,
     CartScreen,
     HistoryScreen,

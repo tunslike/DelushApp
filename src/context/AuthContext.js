@@ -59,7 +59,8 @@ export const AuthProvider = ({children}) => {
   
                   console.log(response.data.statusMessage)
                   //show error message
-                  setErrorMessage(response.data.statusMessage);
+                  //setErrorMessage(response.data.statusMessage);
+                  Alert.alert("Delush", response.data.statusMessage)
   
                   //set loading off
                   setIsLoading(false)

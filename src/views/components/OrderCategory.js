@@ -26,6 +26,7 @@ const OrderCategory = ({active, onPress, label, icon}) => {
 }
 
 const styles = StyleSheet.create({
+  
   textLabel: {
     fontFamily: FONTS.POPPINS_MEDIUM,
     textAlign: 'center',

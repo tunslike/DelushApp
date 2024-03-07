@@ -11,10 +11,12 @@ import {
   Alert,
   ScrollView,
   Dimensions} from 'react-native';
+  import axios from 'axios';
   import { COLORS, images, FONTS, icons } from '../../../constants';
   import { AuthContext } from '../../../context/AuthContext';
   import { useSelector, useDispatch } from 'react-redux';
-  import { OrderCategory, FoodMenuItem } from '../../components';
+  import { OrderCategory, FoodMenuItem, Loader } from '../../components';
+  import { APIBaseUrl, utilities } from '../../../constants';
   import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -25,12 +27,54 @@ const DashboardScreen = ({navigation}) => {
   const customerData = useSelector((state) => state.customer.customerData);
 
   const [activeCategory, setActiveCategory] = useState(1)
+  const [isLoading, setIsLoading] = useState(false);
+  const [menuList, setMenuList] = useState([]);
 
   // function to change category
   const changeOrderCategory = (id) => {
       setActiveCategory(id)
   }
   // end of function
+
+  // functiont to fetch 
+  const fetchFoodMenus = () => {
+    //data
+   const data = {
+    categoryID: ''
+  }
+
+  console.log(data)
+
+  setIsLoading(true);
+
+    axios.post(APIBaseUrl.developmentUrl + 'order/fetchFoodMenu',data,{
+      headers: {
+        'Content-Type' : 'application/json',
+        'Access-Control-Allow-Origin': 'http://localhost:8082'
+      }
+    })
+    .then(response => {
+
+      setIsLoading(false);
+    
+          //set fetch list
+          setMenuList(response.data);
+          console.log(response.data)
+    
+    })
+    .catch(error => {
+      console.log(error);
+    });
+
+
+  }// end of function
+
+  //USE EFFECT
+  useEffect(() => {
+
+    fetchFoodMenus()
+  
+  }, []);
 
   return (
     <SafeAreaView
@@ -40,6 +84,10 @@ const DashboardScreen = ({navigation}) => {
     }}
     >
     <ScrollView>
+
+    {(isLoading) &&
+      <Loader />
+    }
 
         <View style={styles.header}>
             <View>
@@ -74,6 +122,7 @@ const DashboardScreen = ({navigation}) => {
         </TouchableOpacity>
 
         <View style={styles.categoryBox}>
+        
                 <OrderCategory
                     onPress={() => changeOrderCategory(1)}
                     icon={images.foods}
@@ -103,15 +152,22 @@ const DashboardScreen = ({navigation}) => {
        <View style={styles.itemDisplay}>
               <Text style={styles.itemHeader}>Food Menu</Text>
 
-              <FoodMenuItem 
-                onPress={() => navigation.navigate("OrderDetails", {foodImage:images.jollofrice, foodName:"Jollof Rice Special", foodDesc:"Served with plantain or moimio with 1 meat and fish", foodAmount:2500})}
-                image={images.jollofrice}
-                foodName="Jollof Rice Special"
-                desc="Served with plantain or moimio with 1 meat and fish"
-                amount={2500}
-              />
+              {
+                menuList.map((menu) => {
+                  return (
+                      <FoodMenuItem key={menu.food_MENU_ID}
+                        onPress={() => navigation.navigate("OrderDetails", {food_menu_ID:menu.food_MENU_ID, foodImage:utilities.FoodImageMatchAlgorithm(menu.food_NAME), foodName:menu.food_NAME, foodDesc:menu.description, foodAmount:menu.amount})}
+                        image={utilities.FoodImageMatchAlgorithm(menu.food_NAME)}
+                        foodName={menu.food_NAME}
+                        desc={menu.description}
+                        amount={menu.amount}
+                      />
+                  )
+                })
+              }
 
-              <FoodMenuItem 
+              {/*
+                   <FoodMenuItem 
                 onPress={() => navigation.navigate("OrderDetails", {foodImage:images.amala, foodName:"Amala and Ewedu", foodDesc:"Served with 2 pieces of meat or goat meat", foodAmount:4500})}
                 image={images.amala}
                 foodName="Amala and Ewedu"
@@ -134,6 +190,8 @@ const DashboardScreen = ({navigation}) => {
                 desc="Served with plantain or moimio with 1 meat and fish"
                 amount={4500}
               />
+            
+            */}
        </View> 
 
     </ScrollView>

@@ -3,13 +3,17 @@ import React from 'react';
 import {StyleSheet, Platform} from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { COLORS, icons, images } from '../../constants';
+import { COLORS, FONTS, icons, images } from '../../constants';
 import { TabIcon } from '../components';
+import { useSelector } from 'react-redux';
 import { DashboardScreen, CartScreen, ProfileScreen, HistoryScreen } from '../screens';
 
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
+
+    const orderCart = useSelector((state) => state.customer.cart);
+
   return (
     <Tab.Navigator
             
@@ -57,9 +61,11 @@ const TabNavigator = () => {
             }}
             />
         <Tab.Screen 
-            name="Loans" 
+            name="Order" 
             component={CartScreen} 
             options={{
+                tabBarBadge: (orderCart.length > 0) ? orderCart.length : null,
+                tabBarBadgeStyle: styles.tabBadgeStyle,
                 tabBarIcon: ({focused}) => 
                 <TabIcon 
                     focused={focused} 
@@ -86,4 +92,14 @@ const TabNavigator = () => {
 
 export default TabNavigator;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    tabBadgeStyle: {
+        backgroundColor: COLORS.prinmaryOrange, 
+        color: COLORS.white,
+        marginTop: wp(1),
+        marginLeft: wp(2),
+        fontFamily: FONTS.POPPINS_MEDIUM,
+        fontSize: wp(3),
+        paddingTop: wp(0.2)
+    }
+})

@@ -56,9 +56,9 @@ const styles = StyleSheet.create({
   },
   addBtn: {
     backgroundColor: COLORS.prinmaryOrange,
-    borderRadius: wp(2.7),
-    height: wp(7),
-    width: wp(7),
+    borderRadius: wp(2.3),
+    height: wp(6),
+    width: wp(6),
     alignItems: 'center',
     justifyContent: 'center'
   },

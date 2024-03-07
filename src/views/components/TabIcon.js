@@ -12,6 +12,7 @@ const TabIcon = ({focused, icon, title, addStyle}) => {
   if(focused) {
     return (
         <View style={[styles.isFocusedTab,{...addStyle}]}>
+            
             <Image source={icon} 
                 style={{
                     height: wp(5.5),
