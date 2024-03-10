@@ -9,8 +9,10 @@ import SubPageHeader from "./SubPageHeader";
 import Loader from "./Loader";
 import CartOrderItem from "./CartOrderItem";
 import HistoryCard from "./HistoryCard";
+import ProfileTextBox from "./ProfileTextBox";
 
 export {
+    ProfileTextBox,
     HistoryCard,
     CartOrderItem,
     Loader,

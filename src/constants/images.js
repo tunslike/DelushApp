@@ -16,8 +16,24 @@ const egusi = require("../assets/images/egusi.jpeg")
 const notFound = require("../assets/images/order_not_found.jpeg")
 const noOrder = require("../assets/images/no_order_found.jpeg")
 const blank_food = require("../assets/images/blank_food.png")
+const pineapple = require("../assets/images/pinepiple.jpeg")
+const meatPie = require("../assets/images/meatPie.jpeg")
+const mango = require("../assets/images/mango.jpeg")
+const fanta = require("../assets/images/fanta.jpeg")
+const donut = require("../assets/images/donut.jpeg")
+const coke = require("../assets/images/coke.jpeg")
+const aquafina = require("../assets/images/aquafina.jpeg")
+const apple = require("../assets/images/Apple.jpeg")
 
 export default {
+    coke,
+    aquafina,
+    apple,
+    donut,
+    fanta,
+    mango,
+    pineapple,
+    meatPie,
     blank_food,
     noOrder,
     notFound,

@@ -25,11 +25,16 @@ export const customerSlice = createSlice({
         clearOrderCart: (state, action) => {
             state.cart.splice(0, state.cart.length);
             console.log(state.cart.length)
+        },
+        clearCustomerData: (state, action) => {
+            state.customerData = [];
         }
     }
 })
 
 export const {
-    updateCustomerData, addToOrderCart, removeFromOrderCart, clearOrderCart } = customerSlice.actions;
+    updateCustomerData, 
+    clearCustomerData,
+    addToOrderCart, removeFromOrderCart, clearOrderCart } = customerSlice.actions;
 
 export default customerSlice.reducer;

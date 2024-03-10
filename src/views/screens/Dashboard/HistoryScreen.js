@@ -15,12 +15,15 @@ import {
   import moment from 'moment';
   import { COLORS, images, FONTS, APIBaseUrl, icons } from '../../../constants';
   import { AuthContext } from '../../../context/AuthContext';
+  import { useSelector } from 'react-redux';
   import { SubPageHeader, HistoryCard, Loader } from '../../components';
   import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
  import { SafeAreaView } from 'react-native-safe-area-context';
  import { useFocusEffect } from '@react-navigation/native';
 
 const HistoryScreen = ({navigation}) => {
+
+  const customerData = useSelector((state) => state.customer.customerData);
 
   const [historyData, setHistoryData] = useState('data');
   const [toggle, setToggle] = useState(1);
@@ -40,7 +43,7 @@ const HistoryScreen = ({navigation}) => {
   const fetchCustomerOrders = (status) => {
     //data
    const data = {
-    categoryID: ''
+    customer_id: customerData.customer_ENTRY_ID
   }
 
   console.log(data)

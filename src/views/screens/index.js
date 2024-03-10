@@ -9,8 +9,14 @@ import HistoryScreen  from "./Dashboard/HistoryScreen";
 import ProfileScreen from "./Dashboard/ProfileScreen";
 import OrderDetailsScreen from "./Order/OrderDetailsScreen";
 import OrderCompletedScreen from "./Order/OrderCompletedScreen";
+import ProfileUpdateScreen from "./Profile/ProfileUpdateScreen";
+import NotificationScreen from "./Profile/NotificationScreen";
+import PrivacyScreen from "./Profile/PrivacyScreen";
 
 export {
+    NotificationScreen,
+    PrivacyScreen,
+    ProfileUpdateScreen,
     OrderCompletedScreen,
     OrderDetailsScreen,
     CartScreen,

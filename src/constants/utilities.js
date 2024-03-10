@@ -44,6 +44,38 @@ const FoodImageMatchAlgorithm = (foodName) => {
     else if(foodName.toLowerCase().indexOf("salad") > -1) {
 
         return require("../assets/images/salad.jpeg");
+
+    }else if(foodName.toLowerCase().indexOf("pineapple") > -1) {
+
+        return require("../assets/images/pinepiple.jpeg");
+    }
+    else if(foodName.toLowerCase().indexOf("pie") > -1) {
+
+        return require("../assets/images/meatPie.jpeg");
+    }
+    else if(foodName.toLowerCase().indexOf("coke") > -1) {
+
+        return require("../assets/images/coke.jpeg");
+    }
+    else if(foodName.toLowerCase().indexOf("mango") > -1) {
+
+        return require("../assets/images/mango.jpeg");
+    }
+    else if(foodName.toLowerCase().indexOf("apple") > -1) {
+
+        return require("../assets/images/Apple.jpeg");
+    }
+    else if(foodName.toLowerCase().indexOf("fanta") > -1) {
+
+        return require("../assets/images/fanta.jpeg");
+    }
+    else if(foodName.toLowerCase().indexOf("aquafina") > -1) {
+
+        return require("../assets/images/aquafina.jpeg");
+    }
+    else if(foodName.toLowerCase().indexOf("donut") > -1) {
+
+        return require("../assets/images/donut.jpeg");
     }
     else{
 

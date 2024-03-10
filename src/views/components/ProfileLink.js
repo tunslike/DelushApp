@@ -7,9 +7,10 @@ import { StyleSheet,
          import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { FONTS, COLORS, icons } from '../../constants'
 
-const ProfileLink = ({icon, label}) => {
+const ProfileLink = ({icon, onPress, label}) => {
   return (
       <TouchableOpacity
+        onPress={onPress}
         style={styles.container}
       >
         <Image source={icon} 

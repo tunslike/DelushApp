@@ -3,7 +3,7 @@ import { Alert,Keyboard } from 'react-native';
 import axios from 'axios';
 import { APIBaseUrl } from '../constants';
 import { useDispatch } from 'react-redux';
-import { updateCustomerData } from '../store/customerSlice';
+import { updateCustomerData, clearCustomerData } from '../store/customerSlice';
 
 export const AuthContext = createContext();
 
@@ -78,12 +78,23 @@ export const AuthProvider = ({children}) => {
     }
     // END OF FUNCTION
 
+      // FUNCTION TO LOGOUT USER
+      const ExitAuthenticatedUser = () => {
+
+        dispatch(clearCustomerData());
+
+        // disable tokens
+        setUserToken(null)
+    }
+    // END OF FUNCTION
+
     return (
         <AuthContext.Provider
             value={{
                 userToken,
                 ValidateCustomerLogin,
-                isLoading
+                isLoading,
+                ExitAuthenticatedUser
             }}>
         {children}
         </AuthContext.Provider>

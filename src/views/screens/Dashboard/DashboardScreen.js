@@ -33,14 +33,24 @@ const DashboardScreen = ({navigation}) => {
   // function to change category
   const changeOrderCategory = (id) => {
       setActiveCategory(id)
+
+      if(id == 1) {
+        fetchFoodMenus('Food')
+      }else if(id == 2) {
+        fetchFoodMenus('Drink')
+      }else if(id == 3) {
+        fetchFoodMenus('Snack')
+      }else if(id == 4) {
+        fetchFoodMenus('Fruit')
+      }
   }
   // end of function
 
   // functiont to fetch 
-  const fetchFoodMenus = () => {
+  const fetchFoodMenus = (foodid) => {
     //data
    const data = {
-    categoryID: ''
+    foodName: foodid
   }
 
   console.log(data)
@@ -64,6 +74,7 @@ const DashboardScreen = ({navigation}) => {
     })
     .catch(error => {
       console.log(error);
+      setIsLoading(false);
     });
 
 
@@ -72,7 +83,7 @@ const DashboardScreen = ({navigation}) => {
   //USE EFFECT
   useEffect(() => {
 
-    fetchFoodMenus()
+    fetchFoodMenus('Food');
   
   }, []);
 
@@ -83,11 +94,11 @@ const DashboardScreen = ({navigation}) => {
       backgroundColor: COLORS.sliderBackgroundGrey
     }}
     >
-    <ScrollView>
-
+  
     {(isLoading) &&
       <Loader />
     }
+    <ScrollView>
 
         <View style={styles.header}>
             <View>
@@ -229,15 +240,15 @@ const styles = StyleSheet.create({
   orderBtn: {
     backgroundColor: COLORS.white,
     borderRadius: wp(8),
-    paddingHorizontal: wp(2),
-    paddingVertical: wp(2),
+    paddingHorizontal: wp(1),
+    paddingVertical: wp(1.7),
     width: wp(30),
-    marginTop: wp(2)
+    marginTop: wp(3)
   },
   txtPromo: {
       fontFamily: FONTS.POPPINS_BOLD,
       color: COLORS.white,
-      fontSize: wp(4.5),
+      fontSize: wp(4),
       width: wp(55)
   },
   bulkBox: {
