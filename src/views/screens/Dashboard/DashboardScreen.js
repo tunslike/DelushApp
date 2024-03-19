@@ -15,13 +15,13 @@ import {
   import { COLORS, images, FONTS, icons } from '../../../constants';
   import { AuthContext } from '../../../context/AuthContext';
   import { useSelector, useDispatch } from 'react-redux';
+  import AsyncStorage from '@react-native-async-storage/async-storage';
   import { OrderCategory, FoodMenuItem, Loader } from '../../components';
   import { APIBaseUrl, utilities } from '../../../constants';
   import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-const DashboardScreen = ({navigation}) => {
-
+const DashboardScreen = ({navigation, route}) => {
 
   const dispatch = useDispatch();
   const customerData = useSelector((state) => state.customer.customerData);
@@ -80,8 +80,31 @@ const DashboardScreen = ({navigation}) => {
 
   }// end of function
 
+
+      // FUNCTION TO CHECK LOGGED USER
+      const ValidateUserLoggedIn = async () => {
+        try {
+            
+            let userData = await AsyncStorage.getItem('userLogged');
+  
+            if(userData) {
+              console.log('user has logged in before')
+
+            }else{
+              console.log('New User found')
+            }
+            
+            
+        } catch (e) {
+          console.log(`isLogged in error ${e}`);
+        }
+     }
+    // END OF FUNCTION
+
   //USE EFFECT
   useEffect(() => {
+
+    ValidateUserLoggedIn();
 
     fetchFoodMenus('Food');
   
@@ -168,7 +191,7 @@ const DashboardScreen = ({navigation}) => {
                   return (
                       <FoodMenuItem key={menu.food_MENU_ID}
                         onPress={() => navigation.navigate("OrderDetails", {food_menu_ID:menu.food_MENU_ID, foodImage:utilities.FoodImageMatchAlgorithm(menu.food_NAME), foodName:menu.food_NAME, foodDesc:menu.description, foodAmount:menu.amount})}
-                        image={utilities.FoodImageMatchAlgorithm(menu.food_NAME)}
+                        image={(menu.image_BASE_64) ? {uri:menu.image_BASE_64} : utilities.FoodImageMatchAlgorithm(menu.food_NAME)}
                         foodName={menu.food_NAME}
                         desc={menu.description}
                         amount={menu.amount}

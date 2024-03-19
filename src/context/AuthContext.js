@@ -1,6 +1,7 @@
 import React, {createContext, useState} from 'react';
 import { Alert,Keyboard } from 'react-native';
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { APIBaseUrl } from '../constants';
 import { useDispatch } from 'react-redux';
 import { updateCustomerData, clearCustomerData } from '../store/customerSlice';
@@ -49,6 +50,9 @@ export const AuthProvider = ({children}) => {
               if(response.data.response.responseCode == '200') {
 
                    console.log('****************/ LOGIN WAS SUCCESSFUL /********************')
+
+                  //store token in device
+                   AsyncStorage.setItem('userLogged',response.data.customer.customer_ENTRY_ID);
 
                    dispatch(updateCustomerData(response.data.customer))
                    setUserToken(response.data.customer.customer_ENTRY_ID);

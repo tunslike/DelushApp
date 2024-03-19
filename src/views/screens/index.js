@@ -12,8 +12,10 @@ import OrderCompletedScreen from "./Order/OrderCompletedScreen";
 import ProfileUpdateScreen from "./Profile/ProfileUpdateScreen";
 import NotificationScreen from "./Profile/NotificationScreen";
 import PrivacyScreen from "./Profile/PrivacyScreen";
+import WelcomeBackScreen from "./Landing/WelcomeBackScreen";
 
 export {
+    WelcomeBackScreen,
     NotificationScreen,
     PrivacyScreen,
     ProfileUpdateScreen,

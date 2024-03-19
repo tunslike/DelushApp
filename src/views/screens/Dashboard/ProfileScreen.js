@@ -13,6 +13,7 @@ import {
   Dimensions} from 'react-native';
   import { COLORS, images, FONTS, icons } from '../../../constants';
   import { AuthContext } from '../../../context/AuthContext';
+  import AsyncStorage from '@react-native-async-storage/async-storage';
   import { ProfileLink } from '../../components';
   import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -23,6 +24,7 @@ const ProfileScreen = ({navigation}) => {
 
     // function to load facilities
     const LogoutAuthenticatedUser = () => {
+
       Alert.alert("Delush", 'Do you want to logout?', [
         {
           text: 'Cancel',
@@ -35,6 +37,32 @@ const ProfileScreen = ({navigation}) => {
       ]);
     }
   // end of function
+
+     // FUNCTION TO CHECK LOGGED USER
+     const ValidateUserLoggedIn = async () => {
+
+      try {
+          
+          let userData = await AsyncStorage.getItem('userLogged');
+
+          if(userData) {
+
+            console.log('user has logged in before')
+            navigation.navigate("WelcomeBack")
+            return;
+
+          }else{
+
+            console.log('New User found, coming from router')
+
+          }
+          
+          
+      } catch (e) {
+        console.log(`isLogged in error ${e}`);
+      }
+   }
+  // END OF FUNCTION
 
   return (
     <SafeAreaView
