@@ -24,8 +24,10 @@ const donut = require("../assets/images/donut.jpeg")
 const coke = require("../assets/images/coke.jpeg")
 const aquafina = require("../assets/images/aquafina.jpeg")
 const apple = require("../assets/images/Apple.jpeg")
+const no_notification = require("../assets/images/no_notifcation.jpeg")
 
 export default {
+    no_notification,
     coke,
     aquafina,
     apple,

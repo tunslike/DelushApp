@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { DashboardScreen, NotificationScreen, OrderCompletedScreen, OrderDetailsScreen, PrivacyScreen, ProfileUpdateScreen, WelcomeBackScreen } from '../screens';
+import { DashboardScreen, NotificationScreen, OrderCompletedScreen, OrderDetailsScreen, OrderStatusScreen, PrivacyScreen, ProfileUpdateScreen, WelcomeBackScreen } from '../screens';
 import TabNavigator from './TabNavigator';
 
 const Stack = createNativeStackNavigator();
@@ -20,6 +20,7 @@ const AppStack = () => {
             <Stack.Screen name='ProfileUpdate' component={ProfileUpdateScreen} options={{animation: 'slide_from_right'}} />
             <Stack.Screen name='WelcomeBack' component={WelcomeBackScreen} options={{animation: 'slide_from_right'}} />
             <Stack.Screen name='Privacy' component={PrivacyScreen} options={{animation: 'slide_from_right'}} />
+            <Stack.Screen name='OrderStatus' component={OrderStatusScreen} options={{animation: 'slide_from_right'}} />
             <Stack.Screen name='Notification' component={NotificationScreen} options={{animation: 'slide_from_right'}} />
 
         </Stack.Navigator>

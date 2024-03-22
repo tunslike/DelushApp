@@ -24,6 +24,7 @@ const { width, height } = Dimensions.get("window");
 const OrderDetailsScreen = ({navigation, route}) => {
 
     const orderCart = useSelector((state) => state.customer.cart);
+    const storeSettings = useSelector((state) => state.customer.storeSettings)
     const dispatch = useDispatch();
 
     //route values
@@ -117,7 +118,7 @@ useEffect(() => {
                 <Text style={styles.foodDesc}>{foodDesc}</Text>
 
                 <View style={styles.noticeBox}>
-                    <Text style={styles.discTxt}>10% discount for orders more than 10 quantities</Text>
+                    <Text style={styles.discTxt}>{storeSettings.bulk_discount}% discount for orders more than 10 quantities</Text>
                 </View>
                 <Text style={styles.foodPrice}>₦ {(itemPrice * itemQuantity).toLocaleString('en-US', {maximumFractionDigits:2})}</Text>
                 <Text style={[styles.foodDesc, {marginTop: wp(-0.2)}]}>Sub-Total</Text>

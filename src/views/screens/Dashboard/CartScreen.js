@@ -25,12 +25,13 @@ const CartScreen = ({navigation}) => {
 
     const orderCart = useSelector((state) => state.customer.cart);
     const customerData = useSelector((state) => state.customer.customerData);
+    const storeSettings = useSelector((state) => state.customer.storeSettings)
     const dispatch = useDispatch();
 
     const [isLoading, setIsLoading] = useState(false);
-    const [subtotal, setSubTotal] = useState(15000);
-    const [deliveryFee, setDeliveryFee] = useState(500);
-    const [packAmount, setPackAmout] = useState(250)
+    const [subtotal, setSubTotal] = useState(0);
+    const [deliveryFee, setDeliveryFee] = useState(0);
+    const [packAmount, setPackAmout] = useState(0)
     const [totalOrderPrice, setTotalOrderPrice] = useState(0.00)
 
 
@@ -73,7 +74,7 @@ const CartScreen = ({navigation}) => {
                 setTotalOrderPrice(0.00)
                 setSubTotal(0.0)
 
-                navigation.navigate("OrderCompleted",{orderNumber:response.data.orderNumber})
+                navigation.navigate("CompletedOrder",{orderNumber:response.data.orderNumber})
 
                 return;
 
@@ -130,6 +131,8 @@ const CartScreen = ({navigation}) => {
 
 useFocusEffect(
   React.useCallback(() => {
+    setPackAmout(storeSettings.delivery_pack)
+    setDeliveryFee(storeSettings.delivery_fee)
     calculateTotalOrder();
   })
 )
@@ -204,7 +207,7 @@ onPress={() => clearOrderCartItems()}
   <View>
 <Text style={styles.orderSumtxt}>Payment Details</Text>
 <View style={styles.body}>
-<View style={styles.summItem}><Text style={styles.itemSubj}>Payment Method</Text><Text style={[styles.textAmount, {color: COLORS.prinmaryOrange}]}>Pay on delivery</Text></View>
+<View style={styles.summItem}><Text style={styles.itemSubj}>Payment Method</Text><Text style={[styles.textAmount, {color: COLORS.prinmaryOrange}]}>{storeSettings.payment_method}</Text></View>
 </View>
 </View>
 }

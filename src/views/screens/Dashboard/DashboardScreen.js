@@ -25,6 +25,7 @@ const DashboardScreen = ({navigation, route}) => {
 
   const dispatch = useDispatch();
   const customerData = useSelector((state) => state.customer.customerData);
+  const storeSettings = useSelector((state) => state.customer.storeSettings)
 
   const [activeCategory, setActiveCategory] = useState(1)
   const [isLoading, setIsLoading] = useState(false);
@@ -141,7 +142,7 @@ const DashboardScreen = ({navigation, route}) => {
 
         <TouchableOpacity style={styles.bulkBox}>
                     <View>
-                      <Text style={styles.txtPromo}>Get 20% discount on your BULK orders</Text>
+                      <Text style={styles.txtPromo}>Get {storeSettings.bulk_discount}% discount on your BULK orders</Text>
                       <View style={styles.orderBtn}>
                         <Text style={styles.orderTxt}>ORDER NOW!</Text>
                       </View>
@@ -190,7 +191,7 @@ const DashboardScreen = ({navigation, route}) => {
                 menuList.map((menu) => {
                   return (
                       <FoodMenuItem key={menu.food_MENU_ID}
-                        onPress={() => navigation.navigate("OrderDetails", {food_menu_ID:menu.food_MENU_ID, foodImage:utilities.FoodImageMatchAlgorithm(menu.food_NAME), foodName:menu.food_NAME, foodDesc:menu.description, foodAmount:menu.amount})}
+                        onPress={() => navigation.navigate("OrderDetails", {food_menu_ID:menu.food_MENU_ID, foodImage:(menu.image_BASE_64) ? {uri:menu.image_BASE_64} : utilities.FoodImageMatchAlgorithm(menu.food_NAME), foodName:menu.food_NAME, foodDesc:menu.description, foodAmount:menu.amount})}
                         image={(menu.image_BASE_64) ? {uri:menu.image_BASE_64} : utilities.FoodImageMatchAlgorithm(menu.food_NAME)}
                         foodName={menu.food_NAME}
                         desc={menu.description}

@@ -19,7 +19,7 @@ import {
   import { SubPageHeader, HistoryCard, Loader } from '../../components';
   import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
  import { SafeAreaView } from 'react-native-safe-area-context';
- import { useFocusEffect } from '@react-navigation/native';
+ import Modal from 'react-native-modal';
 
 const HistoryScreen = ({navigation}) => {
 
@@ -29,6 +29,11 @@ const HistoryScreen = ({navigation}) => {
   const [toggle, setToggle] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [customerOrder, setCustomerOrder] = useState([]);
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  }
 
   const toggleButton = (value) => {
     setToggle(value)
@@ -76,6 +81,7 @@ const HistoryScreen = ({navigation}) => {
           }
       }
       } 
+    
       setCustomerOrder(filteredData);
           
     })
@@ -126,6 +132,7 @@ const HistoryScreen = ({navigation}) => {
                   customerOrder.map((order) => {
                     return (
                       <HistoryCard key={order.order_ID}
+                        onPress={() => navigation.navigate("OrderStatus", {orderID:order.order_ID})}
                         orderNo={order.order_NUMBER}
                         amount={Intl.NumberFormat('en-US').format(order.amount)}
                         date={moment(order.date_CREATED).format("DD/MM/YYYY")}
@@ -161,6 +168,7 @@ const HistoryScreen = ({navigation}) => {
                   customerOrder.map((order) => {
                     return (
                       <HistoryCard key={order.order_ID}
+                        onPress={() => navigation.navigate("OrderStatus", {orderID:order.order_ID})}
                         orderNo={order.order_NUMBER}
                         amount={Intl.NumberFormat('en-US').format(order.amount)}
                         date={moment(order.date_CREATED).format("DD/MM/YYYY")}
@@ -189,6 +197,13 @@ const HistoryScreen = ({navigation}) => {
     </View>
   }
 
+
+  <Modal isVisible={isModalVisible}>
+      <View style={{flex:1}}>
+          <Text>Hello!</Text>
+          <TouchableOpacity onPress={toggleModal}>Hide Modal</TouchableOpacity>
+      </View>
+  </Modal>
    
 
     </ScrollView>

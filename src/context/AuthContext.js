@@ -4,7 +4,7 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { APIBaseUrl } from '../constants';
 import { useDispatch } from 'react-redux';
-import { updateCustomerData, clearCustomerData } from '../store/customerSlice';
+import { updateCustomerData, clearCustomerData, updateStoreSettings } from '../store/customerSlice';
 
 export const AuthContext = createContext();
 
@@ -55,6 +55,7 @@ export const AuthProvider = ({children}) => {
                    AsyncStorage.setItem('userLogged',response.data.customer.customer_ENTRY_ID);
 
                    dispatch(updateCustomerData(response.data.customer))
+                   dispatch(updateStoreSettings(response.data.storeSettings))
                    setUserToken(response.data.customer.customer_ENTRY_ID);
 
                    return;

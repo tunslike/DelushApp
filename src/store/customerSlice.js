@@ -4,12 +4,16 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     customerData: [],
     cart: [],
+    storeSettings: [],
 }
 
 export const customerSlice = createSlice({
     name: 'Customer',
     initialState: initialState,
     reducers: {
+        updateStoreSettings: (state, action) => {
+            state.storeSettings = action.payload
+        },
         updateCustomerData: (state, action) => {
             state.customerData = action.payload
         },
@@ -35,6 +39,6 @@ export const customerSlice = createSlice({
 export const {
     updateCustomerData, 
     clearCustomerData,
-    addToOrderCart, removeFromOrderCart, clearOrderCart } = customerSlice.actions;
+    addToOrderCart, removeFromOrderCart, clearOrderCart, updateStoreSettings } = customerSlice.actions;
 
 export default customerSlice.reducer;

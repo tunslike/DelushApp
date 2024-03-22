@@ -3,14 +3,13 @@ import { StyleSheet,
          Text, 
          View,
          Image, 
-         Keyboard,
-        TextInput } from 'react-native'
+         TouchableOpacity} from 'react-native'
          import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { FONTS, COLORS, icons, images } from '../../constants'
 
-const HistoryCard = ({orderNo, amount, date, completed}) => {
+const HistoryCard = ({orderNo, onPress, amount, date, completed}) => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity onPress={onPress} style={styles.container}>
       <Image source={images.blank_food} 
           style={{
             height: wp(15), width: wp(15), resizeMode: 'contain', borderRadius: wp(4)
@@ -36,7 +35,7 @@ const HistoryCard = ({orderNo, amount, date, completed}) => {
             />
             <Text style={styles.orderDate}>{date}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   )
 }
 
